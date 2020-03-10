@@ -34,6 +34,7 @@ app.listen(3000, () => {
 202 - Accepted
 204 - No Content
 
-400 - 
+400 - Bad Request
+404 - NotFound
 */
 
