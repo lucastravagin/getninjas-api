@@ -1,5 +1,4 @@
-import {getRepository} from "typeorm";
-import {NextFunction, Request, Response} from "express";
+import { Request } from "express";
 import {User} from "../entity/User";
 import { BaseController } from "./BaseController";
 
@@ -10,7 +9,24 @@ export class UserController extends BaseController<User> {
         super(User)
     }
 
-    //Override
+    async createUser(request: Request) {
+        let { name, photo, email, isRoot, password, confirmPassword } = request.body
+        super.isRequired(name, 'Informe o nome')
+        super.isRequired(photo, 'Informe a foto')
+        super.isRequired(email, 'Informe o E-mail')
+        super.isRequired(password, 'Informe a senha')
+        super.isRequired(confirmPassword, 'Informe a confirmação da senha')
+
+        let _user = new User()
+        _user.name = name
+        _user.photo = photo
+        _user.email = email;
+        _user.password = password
+        _user.isRoot = isRoot
+
+        return super.save(_user)
+    }
+    //Override -- Sobrescrita
     async save(request: Request) {
         let _user = <User>request.body
         super.isRequired(_user.name, 'O nome do usuário é obrigatório')

@@ -1,8 +1,8 @@
-import {Request } from 'express'
+import { Request } from 'express'
 import { Repository, getRepository } from 'typeorm';
 import { BaseNotification } from '../entity/BaseNotification';
 
-export abstract class BaseController<T> extends BaseNotification{
+export abstract class BaseController<T> extends BaseNotification {
 
     private _repository: Repository<T>;
 
