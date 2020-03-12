@@ -14,7 +14,7 @@ export class UserController extends BaseController<User> {
     async save(request: Request) {
         let _user = <User>request.body
         super.isRequired(_user.name, 'O nome do usuário é obrigatório')
-        super.isRequired(_user.photo, 'A foto do usuário é obrigatório')
+        super.isRequired(_user.photo, 'A foto do usuário é obrigatória')
         return super.save(_user)
     }
 
