@@ -1,11 +1,11 @@
 import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import { BaseEntity } from './BaseEntity'
+
 
 @Entity({name: 'User'})
-export class User {
 
-    @PrimaryGeneratedColumn("uuid")
-    uid: string;
-
+export class User extends BaseEntity {
+   
     @Column({type: 'varchar', length: 100})
     name: string;
 
@@ -21,13 +21,5 @@ export class User {
     @Column({type: 'varchar', length: 100})
     password: string;
 
-    @Column({default: true})
-    active: boolean;
-
-    @Column({default: false})
-    deleted: boolean;
-
-    @Column()
-    createAt: Date
 
 }
